@@ -1,0 +1,4 @@
+rootProject.name = 'istio-project'
+include 'client-service'
+include 'audio-service'
+
