@@ -4,6 +4,9 @@ services:
     build: ./client-service
     ports:
       - "8080:8080"
+    restart: always
+    depends_on:
+      - audio-service
   audio-service:
     build: ./audio-service
     ports:
@@ -12,6 +15,7 @@ services:
       - DATABASE_USER=${USER_DB}
       - DATABASE_PASSWORD=${PASSWORD_DB}
       - DATABASE_URL=jdbc:postgresql://audio-db:5432/${AUDIO_DB}
+    restart: always
     depends_on:
       - audio-db
   audio-db:
@@ -22,4 +26,11 @@ services:
       - POSTGRES_DB=${AUDIO_DB}
     ports:
       - "7001:5432"
+    restart: always
+  ui-service:
+    build: ./ui-service
+    ports:
+      - "3000:80"
+    depends_on:
+      - client-service
 
