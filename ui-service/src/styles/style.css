@@ -1,0 +1,14 @@
+.wrapper {
+  width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 40px;
+  background: black;
+}/*# sourceMappingURL=style.css.map */
