@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-service
+  labels:
+    app: ui-service
+spec:
+  selector:
+    matchLabels:
+      app:  ui-service
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ui-service
+        version: blue
+    spec:
+      containers:
+        - image: tsarankouviachaslau/ui-service-blue
+          imagePullPolicy: Always
+          name: ui-service
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-service
+  labels:
+    app: ui-service
+spec:
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app: ui-service
