@@ -17,6 +17,7 @@ spec:
       maxSurge: 1
   template:
     metadata:
+      name: client-service
       labels:
         app: client-service
         version: blue
@@ -36,7 +37,9 @@ metadata:
     app: client-service
 spec:
   ports:
-    - port: 80
-      name: http
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
   selector:
     app: client-service
