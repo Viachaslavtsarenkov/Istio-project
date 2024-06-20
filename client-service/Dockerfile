@@ -9,4 +9,5 @@ COPY --from=extractor /project-client-service/dependencies/. /app/.
 COPY --from=extractor /project-client-service/spring-boot-loader/. /app/.
 COPY --from=extractor /project-client-service/snapshot-dependencies/. /app/.
 COPY --from=extractor /project-client-service/application/. /app/.
+EXPOSE 8080
 CMD ["java", "org.springframework.boot.loader.JarLauncher"]
