@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-service-green
+  labels:
+    app: ui-service
+spec:
+  selector:
+    matchLabels:
+      app:  ui-service
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ui-service
+        version: green
+    spec:
+      containers:
+        - image: tsarankouviachaslau/ui-service-green
+          imagePullPolicy: Always
+          name: ui-service
+          ports:
+            - containerPort: 80
