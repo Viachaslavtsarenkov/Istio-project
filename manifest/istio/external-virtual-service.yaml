@@ -12,9 +12,11 @@ spec:
     - uri:
         exact: /
     - uri:
-        exact: /audio
+        prefix: /audio
     - uri:
         prefix: /static
+    - uri:
+        regex: '^.*\.(ico|png|jpg)$'
     route:
     - destination:
         host: ui-service            # 2
@@ -22,10 +24,10 @@ spec:
           number: 80
           ### client service
   - match:
-      - uri:
-          exact: /client
+    - uri:
+        prefix: /client
     route:
-      - destination:
-          host: client-service            # 3
-          port:
-            number: 80
+    - destination:
+        host: client-service            # 3
+        port:
+          number: 80
