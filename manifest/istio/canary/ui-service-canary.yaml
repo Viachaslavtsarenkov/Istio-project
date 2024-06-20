@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ui-service
+spec:
+  hosts:
+    - ui-service
+  http:
+    - route:
+        - destination:
+            host: ui-service
+            subset: blue
+          weight: 80
+        - destination:
+            host: ui-service
+            subset: green
+          weight: 20
