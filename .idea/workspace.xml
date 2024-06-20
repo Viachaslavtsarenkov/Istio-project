@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df2de954-86ca-413a-880e-6c05604f3992" name="Changes" comment="add Destination rule for a/b testing">
+      <change afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/service/ClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/service/dto/AudioReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/service/dto/IdDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/service/impl/ClientServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui-service/src/RegisterServiceWorker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/component/AudioListView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/src/component/AudioListView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/component/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/src/component/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/component/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/src/component/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui-service/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui-service/src/styles/style.css" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="istio-project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+        <option value="Kubernetes ConfigMap" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="minikube" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2g5uto1SQeH8CvKz7B5gv8ZEJjR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tsaren99/Downloads/PowerShell/istio-mastery&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;dc58f6307c4d932fb46492c57a489782&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tsaren99\Downloads\PowerShell\Istio-project\manifest\k8s\ab-testing" />
+      <recent name="C:\Users\tsaren99\Downloads\PowerShell\Istio-project\ui-service\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.Istio-project [dependencies]">
+    <configuration name="Istio-project [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="AudioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Istio-project.audio-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tsarankou.audioservice.AudioApplication" />
+      <extension name="com.egoshard.intellij.k8s-runtime-config-plugin">
+        <option name="ENABLED" value="false" />
+        <entries />
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Istio-project.client-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tsarankou.clientservice.ClientApplication" />
+      <extension name="com.egoshard.intellij.k8s-runtime-config-plugin">
+        <option name="ENABLED" value="false" />
+        <entries />
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.client-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="client-service" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.ui-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="ui-service" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="ui-service/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="ui-service/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.docker-compose.yaml.client-service: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yaml.ui-service: Compose Deployment" />
+      <item itemvalue="Docker.ui-service/Dockerfile" />
+      <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Gradle.Istio-project [dependencies]" />
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="Spring Boot.ClientApplication" />
+      <item itemvalue="Spring Boot.AudioApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Istio-project [dependencies]" />
+        <item itemvalue="Docker.docker-compose.yaml.client-service: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml.ui-service: Compose Deployment" />
+        <item itemvalue="Docker.ui-service/Dockerfile" />
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df2de954-86ca-413a-880e-6c05604f3992" name="Changes" comment="" />
+      <created>1714999976800</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714999976800</updated>
+      <workItem from="1714999977801" duration="4561000" />
+      <workItem from="1715059998649" duration="12413000" />
+      <workItem from="1715754143089" duration="447000" />
+      <workItem from="1715760834893" duration="600000" />
+      <workItem from="1715840973988" duration="640000" />
+      <workItem from="1716014445430" duration="851000" />
+      <workItem from="1716186100339" duration="11000" />
+      <workItem from="1716795353295" duration="160000" />
+      <workItem from="1716795521583" duration="617000" />
+      <workItem from="1718003315124" duration="6080000" />
+      <workItem from="1718009442794" duration="4253000" />
+      <workItem from="1718096961324" duration="2395000" />
+      <workItem from="1718099850237" duration="150000" />
+      <workItem from="1718100010437" duration="375000" />
+      <workItem from="1718100394756" duration="241000" />
+      <workItem from="1718100644265" duration="757000" />
+      <workItem from="1718181042402" duration="6412000" />
+      <workItem from="1718187973084" duration="12000" />
+      <workItem from="1718268614010" duration="5356000" />
+      <workItem from="1718356002067" duration="1252000" />
+      <workItem from="1718605984234" duration="13398000" />
+      <workItem from="1718690643056" duration="8627000" />
+      <workItem from="1718779890082" duration="1994000" />
+      <workItem from="1718783534629" duration="19000" />
+      <workItem from="1718783562059" duration="5761000" />
+      <workItem from="1718864545091" duration="702000" />
+    </task>
+    <task id="LOCAL-00001" summary="inti project with two modules">
+      <option name="closed" value="true" />
+      <created>1715000901331</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715000901331</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Downgrade Spring Boot version">
+      <option name="closed" value="true" />
+      <created>1715003097452</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715003097452</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add Dockerfile">
+      <option name="closed" value="true" />
+      <created>1715004129452</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715004129452</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add docker-compose.yaml">
+      <option name="closed" value="true" />
+      <created>1715004515753</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715004515753</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add database">
+      <option name="closed" value="true" />
+      <created>1715065389578</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715065389578</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add ui-service">
+      <option name="closed" value="true" />
+      <created>1715074587573</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715074587573</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add dockerfile for ui-service">
+      <option name="closed" value="true" />
+      <created>1715077989853</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715077989854</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add istio Gateway">
+      <option name="closed" value="true" />
+      <created>1718013622679</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718013622679</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add virtual service">
+      <option name="closed" value="true" />
+      <created>1718013640460</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718013640460</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add k8s deployment configuration">
+      <option name="closed" value="true" />
+      <created>1718013674050</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718013674050</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add webflux">
+      <option name="closed" value="true" />
+      <created>1718013703224</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718013703224</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add axios">
+      <option name="closed" value="true" />
+      <created>1718101394833</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1718101394833</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add axios">
+      <option name="closed" value="true" />
+      <created>1718276447141</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718276447141</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add manifest for green version">
+      <option name="closed" value="true" />
+      <created>1718864579894</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864579894</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add manifest for load balancing">
+      <option name="closed" value="true" />
+      <created>1718864659745</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864659745</updated>
+    </task>
+    <task id="LOCAL-00016" summary="change ui-service manifest">
+      <option name="closed" value="true" />
+      <created>1718864693401</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864693401</updated>
+    </task>
+    <task id="LOCAL-00017" summary="change Dockerfile">
+      <option name="closed" value="true" />
+      <created>1718864739298</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864739298</updated>
+    </task>
+    <task id="LOCAL-00018" summary="change Virtual service manifest">
+      <option name="closed" value="true" />
+      <created>1718864788995</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864788995</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add skaffold configuration for local dev">
+      <option name="closed" value="true" />
+      <created>1718864827092</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864827092</updated>
+    </task>
+    <task id="LOCAL-00020" summary="change port">
+      <option name="closed" value="true" />
+      <created>1718864859375</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864859375</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add Destination rule for a/b testing">
+      <option name="closed" value="true" />
+      <created>1718864895769</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1718864895769</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="inti project with two modules" />
+    <MESSAGE value="init project with two modules" />
+    <MESSAGE value="Downgrade Spring Boot version" />
+    <MESSAGE value="add Dockerfile" />
+    <MESSAGE value="add docker-compose.yaml" />
+    <MESSAGE value="add database" />
+    <MESSAGE value="add ui-service" />
+    <MESSAGE value="add dockerfile for ui-service" />
+    <MESSAGE value="add istio Gateway" />
+    <MESSAGE value="add virtual service" />
+    <MESSAGE value="add k8s deployment configuration" />
+    <MESSAGE value="add webflux" />
+    <MESSAGE value="add axios" />
+    <MESSAGE value="add manifest for green version" />
+    <MESSAGE value="add manifest for load balancing" />
+    <MESSAGE value="change ui-service manifest" />
+    <MESSAGE value="change Dockerfile" />
+    <MESSAGE value="change Virtual service manifest" />
+    <MESSAGE value="add skaffold configuration for local dev" />
+    <MESSAGE value="change port" />
+    <MESSAGE value="add Destination rule for a/b testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Destination rule for a/b testing" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

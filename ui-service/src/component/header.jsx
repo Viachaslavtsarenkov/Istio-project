@@ -1,8 +1,12 @@
+import {Button, Menu} from "grommet";
+
 function Header() {
   
     return (
-        <header className={"wrapper header"}>
-        </header>
+        <Header background="brand">
+            <Button  hoverIndicator />
+            <Menu label="account" items={[{ label: 'logout' }]} />
+        </Header>
     )
 }
 

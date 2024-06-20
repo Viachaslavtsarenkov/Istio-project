@@ -1,0 +1,1101 @@
+Subject: [PATCH] add axios
+---
+Index: ui-service/src/styles/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/styles/style.css b/ui-service/src/styles/style.css
+deleted file mode 100644
+--- a/ui-service/src/styles/style.css	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ /dev/null	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
+@@ -1,14 +0,0 @@
+-.wrapper {
+-  width: 1440px;
+-  height: 100vh;
+-  margin: 0 auto;
+-  border: 1px solid red;
+-  display: flex;
+-  flex-direction: column;
+-  justify-content: space-between;
+-}
+-
+-.header {
+-  height: 40px;
+-  background: black;
+-}/*# sourceMappingURL=style.css.map */
+\ No newline at end of file
+Index: ui-service/src/reportWebVitals.js
+===================================================================
+diff --git a/ui-service/src/reportWebVitals.js b/ui-service/src/reportWebVitals.js
+deleted file mode 100644
+--- a/ui-service/src/reportWebVitals.js	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ /dev/null	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
+@@ -1,13 +0,0 @@
+-const reportWebVitals = onPerfEntry => {
+-  if (onPerfEntry && onPerfEntry instanceof Function) {
+-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+-      getCLS(onPerfEntry);
+-      getFID(onPerfEntry);
+-      getFCP(onPerfEntry);
+-      getLCP(onPerfEntry);
+-      getTTFB(onPerfEntry);
+-    });
+-  }
+-};
+-
+-export default reportWebVitals;
+Index: ui-service/src/setupTests.js
+===================================================================
+diff --git a/ui-service/src/setupTests.js b/ui-service/src/setupTests.js
+deleted file mode 100644
+--- a/ui-service/src/setupTests.js	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ /dev/null	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
+@@ -1,5 +0,0 @@
+-// jest-dom adds custom jest matchers for asserting on DOM nodes.
+-// allows you to do things like:
+-// expect(element).toHaveTextContent(/react/i)
+-// learn more: https://github.com/testing-library/jest-dom
+-import '@testing-library/jest-dom';
+Index: client-service/Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/Dockerfile b/client-service/Dockerfile
+--- a/client-service/Dockerfile	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/Dockerfile	(date 1718692900582)
+@@ -2,11 +2,11 @@
+ WORKDIR /project-client-service
+ COPY build/libs/app.jar /project-client-service/
+ RUN java -Djarmode=layertools -jar app.jar extract
+-
+ FROM amazoncorretto:17.0.9-al2023-headless
+ WORKDIR /app
+ COPY --from=extractor /project-client-service/dependencies/. /app/.
+ COPY --from=extractor /project-client-service/spring-boot-loader/. /app/.
+ COPY --from=extractor /project-client-service/snapshot-dependencies/. /app/.
+ COPY --from=extractor /project-client-service/application/. /app/.
++EXPOSE 8080
+ CMD ["java", "org.springframework.boot.loader.JarLauncher"]
+\ No newline at end of file
+Index: client-service/src/main/java/com/tsarankou/clientservice/service/dto/AudioReqDto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/service/dto/AudioReqDto.java b/client-service/src/main/java/com/tsarankou/clientservice/service/dto/AudioReqDto.java
+new file mode 100644
+--- /dev/null	(date 1718785631848)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/service/dto/AudioReqDto.java	(date 1718785631848)
+@@ -0,0 +1,11 @@
++package com.tsarankou.clientservice.service.dto;
++
++import lombok.Data;
++
++import java.io.File;
++
++@Data
++public class AudioReqDto {
++    private File audioFile;
++    private String name;
++}
+Index: ui-service/src/component/main.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/component/main.jsx b/ui-service/src/component/main.jsx
+--- a/ui-service/src/component/main.jsx	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/src/component/main.jsx	(date 1718696243548)
+@@ -1,12 +1,16 @@
+ import { Link } from "react-router-dom";
+ import '../styles/style.css';
++import React from "react";
++import {Heading, Main, Paragraph} from "grommet";
+ 
+ function main() {
+   
+     return (
+-        <div className={"wrapper main"}>
+-            This is main page <br/>
+-            <Link to={"audio"}>to list view</Link>
++        <div className={"wrapper"}>
++            <Main pad="large">
++                <Heading>Audio</Heading>
++                <Paragraph>Something about something</Paragraph>
++            </Main>
+         </div>
+     )
+ }
+Index: client-service/src/main/java/com/tsarankou/clientservice/service/dto/IdDto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/service/dto/IdDto.java b/client-service/src/main/java/com/tsarankou/clientservice/service/dto/IdDto.java
+new file mode 100644
+--- /dev/null	(date 1718785631839)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/service/dto/IdDto.java	(date 1718785631839)
+@@ -0,0 +1,8 @@
++package com.tsarankou.clientservice.service.dto;
++
++import lombok.Data;
++
++@Data
++public class IdDto {
++    private Long id;
++}
+Index: client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java b/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java
+--- a/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/client/AudioClient.java	(date 1718786417739)
+@@ -1,5 +1,7 @@
+ package com.tsarankou.clientservice.client;
+ 
++import com.tsarankou.clientservice.service.dto.AudioReqDto;
++
+ public interface AudioClient {
+-    public void saveAudio();
++    public void sendAudio(AudioReqDto audioReqDto);
+ }
+Index: client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java b/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java
+--- a/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/client/impl/AudioClientImpl.java	(date 1718786417734)
+@@ -1,19 +1,20 @@
+ package com.tsarankou.clientservice.client.impl;
+ 
+ import com.tsarankou.clientservice.client.AudioClient;
++import com.tsarankou.clientservice.service.dto.AudioReqDto;
+ import lombok.RequiredArgsConstructor;
+ import lombok.extern.slf4j.Slf4j;
+ import org.springframework.stereotype.Component;
+-import org.springframework.web.reactive.function.client.WebClient;
+ 
+ @Component
+ @RequiredArgsConstructor
+ @Slf4j
+ public class AudioClientImpl implements AudioClient {
+-    private final WebClient webClient;
++
++    //private final WebClient webClient;
+ 
+     @Override
+-    public void saveAudio() {
++    public void sendAudio(AudioReqDto audioReqDto) {
+ 
+     }
+ }
+Index: client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java b/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java
+--- a/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/config/AppConfig.java	(date 1718785201286)
+@@ -6,7 +6,6 @@
+ 
+ @Configuration
+ public class AppConfig {
+-
+     @Bean
+     public WebClient webClient() {
+         return WebClient.builder().build();
+Index: manifest/istio/http-gateway.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/istio/http-gateway.yaml b/manifest/istio/http-gateway.yaml
+--- a/manifest/istio/http-gateway.yaml	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/manifest/istio/http-gateway.yaml	(date 1718692369049)
+@@ -11,4 +11,4 @@
+         name: http
+         protocol: HTTP
+       hosts:
+-        - "*"
+\ No newline at end of file
++        - "*"
+Index: client-service/src/main/resources/application.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/resources/application.yaml b/client-service/src/main/resources/application.yaml
+--- a/client-service/src/main/resources/application.yaml	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/src/main/resources/application.yaml	(date 1718785424354)
+@@ -1,2 +1,12 @@
+ server:
+-  port: 8080
+\ No newline at end of file
++  port: 8080
++#opentracing:
++#  jaeger:
++#    udp-sender:
++#      host: localhost
++#      enable-b3-propagation: true
++
++services:
++  audio:
++    id: localhost
++    endpoint: ping
+\ No newline at end of file
+Index: ui-service/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/package.json b/ui-service/package.json
+--- a/ui-service/package.json	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/package.json	(date 1718694117733)
+@@ -2,15 +2,20 @@
+   "name": "ui-service",
+   "version": "0.1.0",
+   "private": true,
++  "proxy": "http://localhost:8080",
+   "dependencies": {
+     "@testing-library/jest-dom": "^5.17.0",
+     "@testing-library/react": "^13.4.0",
+     "@testing-library/user-event": "^13.5.0",
+     "axios": "^1.7.2",
++    "cors": "^2.8.5",
++    "grommet": "^2.38.0",
++    "grommet-icons": "^4.12.1",
+     "react": "^18.3.1",
+     "react-dom": "^18.3.1",
+     "react-router-dom": "^6.23.0",
+     "react-scripts": "5.0.1",
++    "styled-components": "^6.1.11",
+     "web-vitals": "^2.1.4"
+   },
+   "scripts": {
+@@ -19,12 +24,6 @@
+     "test": "react-scripts test",
+     "eject": "react-scripts eject"
+   },
+-  "eslintConfig": {
+-    "extends": [
+-      "react-app",
+-      "react-app/jest"
+-    ]
+-  },
+   "browserslist": {
+     "production": [
+       ">0.2%",
+Index: ui-service/Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/Dockerfile b/ui-service/Dockerfile
+--- a/ui-service/Dockerfile	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/Dockerfile	(date 1718614726697)
+@@ -1,9 +1,10 @@
+ FROM node:current-alpine as build
+-WORKDIR /ui-service
++WORKDIR /app
+ COPY package*.json ./
++ENV CI=true
+ RUN npm install
+ COPY . .
+ RUN npm run build
+ FROM nginx
+-COPY --from=build /ui-service/build /usr/share/nginx/html
++COPY --from=build /app/build /usr/share/nginx/html
+ EXPOSE 80
+\ No newline at end of file
+Index: manifest/k8s/ab-testing/ui-service-green-deployment.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/k8s/ab-testing/ui-service-green-deployment.yaml b/manifest/k8s/ab-testing/ui-service-green-deployment.yaml
+new file mode 100644
+--- /dev/null	(date 1718786972039)
++++ b/manifest/k8s/ab-testing/ui-service-green-deployment.yaml	(date 1718786972039)
+@@ -0,0 +1,29 @@
++apiVersion: apps/v1
++kind: Deployment
++metadata:
++  name: ui-service-green
++  labels:
++    app: ui-service
++spec:
++  selector:
++    matchLabels:
++      app:  ui-service
++  replicas: 1
++  minReadySeconds: 15
++  strategy:
++    type: RollingUpdate
++    rollingUpdate:
++      maxUnavailable: 1
++      maxSurge: 1
++  template:
++    metadata:
++      labels:
++        app: ui-service
++        version: green
++    spec:
++      containers:
++        - image: tsarankouviachaslau/ui-service-green
++          imagePullPolicy: Always
++          name: ui-service
++          ports:
++            - containerPort: 80
+\ No newline at end of file
+Index: client-service/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/build.gradle b/client-service/build.gradle
+--- a/client-service/build.gradle	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/build.gradle	(date 1718783684391)
+@@ -14,6 +14,9 @@
+     /* WEB */
+     implementation 'org.springframework.boot:spring-boot-starter-web'
+     implementation 'org.springframework.boot:spring-boot-starter-webflux'
++    implementation 'org.springframework.boot:spring-boot-starter-jersey'
++    implementation 'io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9'
++    implementation group: 'io.jaegertracing', name: 'jaeger-tracerresolver', version: '1.8.1'
+     /* Dev */
+     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+     compileOnly 'org.projectlombok:lombok'
+Index: manifest/istio/canary/ui-service-canary.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/istio/canary/ui-service-canary.yaml b/manifest/istio/canary/ui-service-canary.yaml
+new file mode 100644
+--- /dev/null	(date 1718788073724)
++++ b/manifest/istio/canary/ui-service-canary.yaml	(date 1718788073724)
+@@ -0,0 +1,17 @@
++apiVersion: networking.istio.io/v1alpha3
++kind: VirtualService
++metadata:
++  name: ui-service
++spec:
++  hosts:
++    - ui-service
++  http:
++    - route:
++        - destination:
++            host: ui-service
++            subset: blue
++          weight: 80
++        - destination:
++            host: ui-service
++            subset: green
++          weight: 20
+\ No newline at end of file
+Index: manifest/istio/ab-testing/destination-rules-ui-service.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/istio/ab-testing/destination-rules-ui-service.yaml b/manifest/istio/ab-testing/destination-rules-ui-service.yaml
+new file mode 100644
+--- /dev/null	(date 1718787029010)
++++ b/manifest/istio/ab-testing/destination-rules-ui-service.yaml	(date 1718787029010)
+@@ -0,0 +1,10 @@
++apiVersion: networking.istio.io/v1alpha3
++kind: DestinationRule
++metadata:
++  name: ui-service
++spec:
++  host: ui-service
++  trafficPolicy:
++    loadBalancer:
++      consistentHash:
++        httpHeaderName: version
+\ No newline at end of file
+Index: client-service/src/main/java/com/tsarankou/clientservice/service/ClientService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/service/ClientService.java b/client-service/src/main/java/com/tsarankou/clientservice/service/ClientService.java
+new file mode 100644
+--- /dev/null	(date 1718785631871)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/service/ClientService.java	(date 1718785631871)
+@@ -0,0 +1,9 @@
++package com.tsarankou.clientservice.service;
++
++import com.tsarankou.clientservice.service.dto.IdDto;
++
++import java.io.File;
++
++public interface ClientService {
++    public IdDto saveAudio(File file, String name);
++}
+Index: ui-service/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/package-lock.json b/ui-service/package-lock.json
+--- a/ui-service/package-lock.json	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/package-lock.json	(date 1718694118208)
+@@ -12,10 +12,14 @@
+         "@testing-library/react": "^13.4.0",
+         "@testing-library/user-event": "^13.5.0",
+         "axios": "^1.7.2",
++        "cors": "^2.8.5",
++        "grommet": "^2.38.0",
++        "grommet-icons": "^4.12.1",
+         "react": "^18.3.1",
+         "react-dom": "^18.3.1",
+         "react-router-dom": "^6.23.0",
+         "react-scripts": "5.0.1",
++        "styled-components": "^6.1.11",
+         "web-vitals": "^2.1.4"
+       }
+     },
+@@ -2293,6 +2297,24 @@
+         "postcss-selector-parser": "^6.0.10"
+       }
+     },
++    "node_modules/@emotion/is-prop-valid": {
++      "version": "1.2.2",
++      "resolved": "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.2.2.tgz",
++      "integrity": "sha512-uNsoYd37AFmaCdXlg6EYD1KaPOaRWRByMCYzbKUX4+hhMfrxdVSelShywL4JVaAeM/eHUOSprYBQls+/neX3pw==",
++      "dependencies": {
++        "@emotion/memoize": "^0.8.1"
++      }
++    },
++    "node_modules/@emotion/memoize": {
++      "version": "0.8.1",
++      "resolved": "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.8.1.tgz",
++      "integrity": "sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA=="
++    },
++    "node_modules/@emotion/unitless": {
++      "version": "0.8.1",
++      "resolved": "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.8.1.tgz",
++      "integrity": "sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ=="
++    },
+     "node_modules/@eslint-community/eslint-utils": {
+       "version": "4.4.0",
+       "resolved": "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz",
+@@ -4487,6 +4509,11 @@
+       "resolved": "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.3.tgz",
+       "integrity": "sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw=="
+     },
++    "node_modules/@types/stylis": {
++      "version": "4.2.5",
++      "resolved": "https://registry.npmjs.org/@types/stylis/-/stylis-4.2.5.tgz",
++      "integrity": "sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw=="
++    },
+     "node_modules/@types/testing-library__jest-dom": {
+       "version": "5.14.9",
+       "resolved": "https://registry.npmjs.org/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.9.tgz",
+@@ -5970,6 +5997,14 @@
+         "node": ">= 6"
+       }
+     },
++    "node_modules/camelize": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/camelize/-/camelize-1.0.1.tgz",
++      "integrity": "sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==",
++      "funding": {
++        "url": "https://github.com/sponsors/ljharb"
++      }
++    },
+     "node_modules/caniuse-api": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/caniuse-api/-/caniuse-api-3.0.0.tgz",
+@@ -6344,6 +6379,18 @@
+       "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz",
+       "integrity": "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ=="
+     },
++    "node_modules/cors": {
++      "version": "2.8.5",
++      "resolved": "https://registry.npmjs.org/cors/-/cors-2.8.5.tgz",
++      "integrity": "sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==",
++      "dependencies": {
++        "object-assign": "^4",
++        "vary": "^1"
++      },
++      "engines": {
++        "node": ">= 0.10"
++      }
++    },
+     "node_modules/cosmiconfig": {
+       "version": "7.1.0",
+       "resolved": "https://registry.npmjs.org/cosmiconfig/-/cosmiconfig-7.1.0.tgz",
+@@ -6397,6 +6444,14 @@
+         "postcss": "^8.4"
+       }
+     },
++    "node_modules/css-color-keywords": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/css-color-keywords/-/css-color-keywords-1.0.0.tgz",
++      "integrity": "sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==",
++      "engines": {
++        "node": ">=4"
++      }
++    },
+     "node_modules/css-declaration-sorter": {
+       "version": "6.4.1",
+       "resolved": "https://registry.npmjs.org/css-declaration-sorter/-/css-declaration-sorter-6.4.1.tgz",
+@@ -6587,6 +6642,16 @@
+       "resolved": "https://registry.npmjs.org/css-select-base-adapter/-/css-select-base-adapter-0.1.1.tgz",
+       "integrity": "sha512-jQVeeRG70QI08vSTwf1jHxp74JoZsr2XSgETae8/xC8ovSnL2WF87GTLO86Sbwdt2lK4Umg4HnnwMO4YF3Ce7w=="
+     },
++    "node_modules/css-to-react-native": {
++      "version": "3.2.0",
++      "resolved": "https://registry.npmjs.org/css-to-react-native/-/css-to-react-native-3.2.0.tgz",
++      "integrity": "sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==",
++      "dependencies": {
++        "camelize": "^1.0.0",
++        "css-color-keywords": "^1.0.0",
++        "postcss-value-parser": "^4.0.2"
++      }
++    },
+     "node_modules/css-tree": {
+       "version": "1.0.0-alpha.37",
+       "resolved": "https://registry.npmjs.org/css-tree/-/css-tree-1.0.0-alpha.37.tgz",
+@@ -9117,6 +9182,36 @@
+       "resolved": "https://registry.npmjs.org/graphemer/-/graphemer-1.4.0.tgz",
+       "integrity": "sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag=="
+     },
++    "node_modules/grommet": {
++      "version": "2.38.0",
++      "resolved": "https://registry.npmjs.org/grommet/-/grommet-2.38.0.tgz",
++      "integrity": "sha512-AlEpfV8YI0oasRiancw2Bp1aEs535wakoYKzdlV4jitufM/EZ4ZTUj5ZQDAIUTL/fxUD11xynBY01morehFyzA==",
++      "dependencies": {
++        "@emotion/is-prop-valid": "^1.2.1",
++        "grommet-icons": "^4.12.1",
++        "hoist-non-react-statics": "^3.2.0",
++        "markdown-to-jsx": "7.4.4",
++        "prop-types": "^15.8.1"
++      },
++      "engines": {
++        "node": ">= 16"
++      },
++      "peerDependencies": {
++        "react": "^16.6.1 || ^17.0.0 || ^18.0.0",
++        "react-dom": "^16.6.1 || ^17.0.0 || ^18.0.0",
++        "styled-components": "^5.1.0 || ^6.0.0"
++      }
++    },
++    "node_modules/grommet-icons": {
++      "version": "4.12.1",
++      "resolved": "https://registry.npmjs.org/grommet-icons/-/grommet-icons-4.12.1.tgz",
++      "integrity": "sha512-LhOP6BkDAGiSNcUOfsGGRo+AKD6zWOXeNeusY1WYvKplAR6mKCAQfH7Nig2Buc/v5zadKSko2NDtCQqwJaME0Q==",
++      "peerDependencies": {
++        "react": "^16.6.0 || ^17.0.0 || ^18.0.0",
++        "react-dom": "^16.6.0 || ^17.0.0 || ^18.0.0",
++        "styled-components": ">= 5.x"
++      }
++    },
+     "node_modules/gzip-size": {
+       "version": "6.0.0",
+       "resolved": "https://registry.npmjs.org/gzip-size/-/gzip-size-6.0.0.tgz",
+@@ -9223,6 +9318,19 @@
+         "he": "bin/he"
+       }
+     },
++    "node_modules/hoist-non-react-statics": {
++      "version": "3.3.2",
++      "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz",
++      "integrity": "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==",
++      "dependencies": {
++        "react-is": "^16.7.0"
++      }
++    },
++    "node_modules/hoist-non-react-statics/node_modules/react-is": {
++      "version": "16.13.1",
++      "resolved": "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz",
++      "integrity": "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
++    },
+     "node_modules/hoopy": {
+       "version": "0.1.4",
+       "resolved": "https://registry.npmjs.org/hoopy/-/hoopy-0.1.4.tgz",
+@@ -12577,6 +12685,17 @@
+         "tmpl": "1.0.5"
+       }
+     },
++    "node_modules/markdown-to-jsx": {
++      "version": "7.4.4",
++      "resolved": "https://registry.npmjs.org/markdown-to-jsx/-/markdown-to-jsx-7.4.4.tgz",
++      "integrity": "sha512-R9SGyfV2zsQx25YIYImACpiQ8dQe617CNyoE1wLst4wFHtiBGG3SEtJDlI1bt9SeotIcbITbVy9+ieQFWfEoQw==",
++      "engines": {
++        "node": ">= 10"
++      },
++      "peerDependencies": {
++        "react": ">= 0.14.0"
++      }
++    },
+     "node_modules/mdn-data": {
+       "version": "2.0.4",
+       "resolved": "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.4.tgz",
+@@ -16013,6 +16132,11 @@
+       "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
+       "integrity": "sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw=="
+     },
++    "node_modules/shallowequal": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz",
++      "integrity": "sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ=="
++    },
+     "node_modules/shebang-command": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz",
+@@ -16554,6 +16678,33 @@
+         "webpack": "^5.0.0"
+       }
+     },
++    "node_modules/styled-components": {
++      "version": "6.1.11",
++      "resolved": "https://registry.npmjs.org/styled-components/-/styled-components-6.1.11.tgz",
++      "integrity": "sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==",
++      "dependencies": {
++        "@emotion/is-prop-valid": "1.2.2",
++        "@emotion/unitless": "0.8.1",
++        "@types/stylis": "4.2.5",
++        "css-to-react-native": "3.2.0",
++        "csstype": "3.1.3",
++        "postcss": "8.4.38",
++        "shallowequal": "1.1.0",
++        "stylis": "4.3.2",
++        "tslib": "2.6.2"
++      },
++      "engines": {
++        "node": ">= 16"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/styled-components"
++      },
++      "peerDependencies": {
++        "react": ">= 16.8.0",
++        "react-dom": ">= 16.8.0"
++      }
++    },
+     "node_modules/stylehacks": {
+       "version": "5.1.1",
+       "resolved": "https://registry.npmjs.org/stylehacks/-/stylehacks-5.1.1.tgz",
+@@ -16569,6 +16720,11 @@
+         "postcss": "^8.2.15"
+       }
+     },
++    "node_modules/stylis": {
++      "version": "4.3.2",
++      "resolved": "https://registry.npmjs.org/stylis/-/stylis-4.3.2.tgz",
++      "integrity": "sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg=="
++    },
+     "node_modules/sucrase": {
+       "version": "3.35.0",
+       "resolved": "https://registry.npmjs.org/sucrase/-/sucrase-3.35.0.tgz",
+Index: ui-service/src/RegisterServiceWorker.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/RegisterServiceWorker.jsx b/ui-service/src/RegisterServiceWorker.jsx
+new file mode 100644
+--- /dev/null	(date 1718186377251)
++++ b/ui-service/src/RegisterServiceWorker.jsx	(date 1718186377251)
+@@ -0,0 +1,108 @@
++// In production, we register a service worker to serve assets from local cache.
++
++// This lets the app load faster on subsequent visits in production, and gives
++// it offline capabilities. However, it also means that developers (and users)
++// will only see deployed updates on the "N+1" visit to a page, since previously
++// cached resources are updated in the background.
++
++// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
++// This link also includes instructions on opting out of this behavior.
++
++const isLocalhost = Boolean(
++    window.location.hostname === 'localhost' ||
++    // [::1] is the IPv6 localhost address.
++    window.location.hostname === '[::1]' ||
++    // 127.0.0.1/8 is considered localhost for IPv4.
++    window.location.hostname.match(
++        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
++    )
++);
++
++export default function register() {
++    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
++        // The URL constructor is available in all browsers that support SW.
++        const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
++        if (publicUrl.origin !== window.location.origin) {
++            // Our service worker won't work if PUBLIC_URL is on a different origin
++            // from what our page is served on. This might happen if a CDN is used to
++            // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
++            return;
++        }
++
++        window.addEventListener('load', () => {
++            const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
++
++            if (isLocalhost) {
++                // This is running on localhost. Lets check if a service worker still exists or not.
++                checkValidServiceWorker(swUrl);
++            } else {
++                // Is not local host. Just register service worker
++                registerValidSW(swUrl);
++            }
++        });
++    }
++}
++
++function registerValidSW(swUrl) {
++    navigator.serviceWorker
++        .register(swUrl)
++        .then(registration => {
++            registration.onupdatefound = () => {
++                const installingWorker = registration.installing;
++                installingWorker.onstatechange = () => {
++                    if (installingWorker.state === 'installed') {
++                        if (navigator.serviceWorker.controller) {
++                            // At this point, the old content will have been purged and
++                            // the fresh content will have been added to the cache.
++                            // It's the perfect time to display a "New content is
++                            // available; please refresh." message in your web app.
++                            console.log('New content is available; please refresh.');
++                        } else {
++                            // At this point, everything has been precached.
++                            // It's the perfect time to display a
++                            // "Content is cached for offline use." message.
++                            console.log('Content is cached for offline use.');
++                        }
++                    }
++                };
++            };
++        })
++        .catch(error => {
++            console.error('Error during service worker registration:', error);
++        });
++}
++
++function checkValidServiceWorker(swUrl) {
++    // Check if the service worker can be found. If it can't reload the page.
++    fetch(swUrl)
++        .then(response => {
++            // Ensure service worker exists, and that we really are getting a JS file.
++            if (
++                response.status === 404 ||
++                response.headers.get('content-type').indexOf('javascript') === -1
++            ) {
++                // No service worker found. Probably a different app. Reload the page.
++                navigator.serviceWorker.ready.then(registration => {
++                    unregister().then(() => {
++                        window.location.reload();
++                    });
++                });
++            } else {
++                // Service worker found. Proceed as normal.
++                registerValidSW(swUrl);
++            }
++        })
++        .catch(() => {
++            console.log(
++                'No internet connection found. App is running in offline mode.'
++            );
++        });
++}
++
++export function unregister() {
++    if ('serviceWorker' in navigator) {
++        navigator.serviceWorker.ready.then(registration => {
++            registration.unregister();
++        });
++    }
++}
+\ No newline at end of file
+Index: manifest/istio/external-virtual-service.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/istio/external-virtual-service.yaml b/manifest/istio/external-virtual-service.yaml
+--- a/manifest/istio/external-virtual-service.yaml	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/manifest/istio/external-virtual-service.yaml	(date 1718619052966)
+@@ -12,9 +12,11 @@
+     - uri:
+         exact: /
+     - uri:
+-        exact: /audio
++        prefix: /audio
+     - uri:
+         prefix: /static
++    - uri:
++        regex: '^.*\.(ico|png|jpg)$'
+     route:
+     - destination:
+         host: ui-service            # 2
+@@ -22,10 +24,10 @@
+           number: 80
+           ### client service
+   - match:
+-      - uri:
+-          exact: /client
++    - uri:
++        prefix: /client
+     route:
+-      - destination:
+-          host: client-service            # 3
+-          port:
+-            number: 80
+\ No newline at end of file
++    - destination:
++        host: client-service            # 3
++        port:
++          number: 80
+\ No newline at end of file
+Index: manifest/k8s/client-service.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/k8s/client-service.yaml b/manifest/k8s/client-service.yaml
+--- a/manifest/k8s/client-service.yaml	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/manifest/k8s/client-service.yaml	(date 1718692560193)
+@@ -9,14 +9,9 @@
+     matchLabels:
+       app:  client-service
+   replicas: 1
+-  minReadySeconds: 15
+-  strategy:
+-    type: RollingUpdate
+-    rollingUpdate:
+-      maxUnavailable: 1
+-      maxSurge: 1
+   template:
+     metadata:
++      name: client-service
+       labels:
+         app: client-service
+         version: blue
+@@ -36,7 +31,9 @@
+     app: client-service
+ spec:
+   ports:
+-    - port: 80
+-      name: http
++    - name: http
++      protocol: TCP
++      port: 80
++      targetPort: 8080
+   selector:
+     app: client-service
+\ No newline at end of file
+Index: manifest/k8s/ui-service.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/manifest/k8s/ui-service.yaml b/manifest/k8s/ui-service.yaml
+--- a/manifest/k8s/ui-service.yaml	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/manifest/k8s/ui-service.yaml	(date 1718690960877)
+@@ -36,7 +36,9 @@
+     app: ui-service
+ spec:
+   ports:
+-    - port: 80
+-      name: http
++    - name: http
++      protocol: TCP
++      port: 80
++      targetPort: 80
+   selector:
+     app: ui-service
+\ No newline at end of file
+Index: client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java b/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java
+--- a/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/web/ClientController.java	(date 1718785631878)
+@@ -1,14 +1,37 @@
+ package com.tsarankou.clientservice.web;
+ 
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.RequestMapping;
+-import org.springframework.web.bind.annotation.RestController;
++import com.tsarankou.clientservice.service.dto.IdDto;
++import com.tsarankou.clientservice.service.ClientService;
++import lombok.RequiredArgsConstructor;
++import org.springframework.http.ResponseEntity;
++import org.springframework.web.bind.annotation.*;
++import org.springframework.web.multipart.MultipartFile;
++
++import java.io.File;
++import java.io.FileOutputStream;
++import java.io.IOException;
+ 
+ @RestController
+ @RequestMapping("/client")
++@RequiredArgsConstructor
+ public class ClientController {
+-    @GetMapping
+-    public String findClientAudio() {
+-        return "from client";
++
++
++    private final ClientService clientService;
++
++    @GetMapping()
++    public ResponseEntity<String> findClientAudio() {
++        System.out.println("from server");
++        return ResponseEntity.ok("from server");
++    }
++
++    @PostMapping
++    public IdDto saveAudioFile(@RequestParam(name = "audioFile") MultipartFile audioFile, String fileName) throws IOException {
++        File convFile = new File( audioFile.getOriginalFilename() );
++        FileOutputStream fos = new FileOutputStream( convFile );
++        fos.write(audioFile.getBytes());
++        fos.close();
++
++    return clientService.saveAudio(convFile, fileName);
+     }
+ }
+Index: ui-service/src/component/header.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/component/header.jsx b/ui-service/src/component/header.jsx
+--- a/ui-service/src/component/header.jsx	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/src/component/header.jsx	(date 1718694681448)
+@@ -1,8 +1,12 @@
++import {Button, Menu} from "grommet";
++
+ function Header() {
+   
+     return (
+-        <header className={"wrapper header"}>
+-        </header>
++        <Header background="brand">
++            <Button  hoverIndicator />
++            <Menu label="account" items={[{ label: 'logout' }]} />
++        </Header>
+     )
+ }
+ 
+Index: client-service/src/main/java/com/tsarankou/clientservice/service/impl/ClientServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client-service/src/main/java/com/tsarankou/clientservice/service/impl/ClientServiceImpl.java b/client-service/src/main/java/com/tsarankou/clientservice/service/impl/ClientServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1718786417729)
++++ b/client-service/src/main/java/com/tsarankou/clientservice/service/impl/ClientServiceImpl.java	(date 1718786417729)
+@@ -0,0 +1,29 @@
++package com.tsarankou.clientservice.service.impl;
++
++import com.tsarankou.clientservice.client.AudioClient;
++import com.tsarankou.clientservice.service.dto.AudioReqDto;
++import com.tsarankou.clientservice.service.dto.IdDto;
++import com.tsarankou.clientservice.service.ClientService;
++import lombok.RequiredArgsConstructor;
++import org.springframework.stereotype.Service;
++
++import java.io.File;
++
++@Service
++@RequiredArgsConstructor
++public class ClientServiceImpl implements ClientService {
++    //todo
++    // sending audio to another service
++
++    private final AudioClient audioClient;
++    //
++    @Override
++    public IdDto saveAudio(File file, String name) {
++        AudioReqDto audioReqDto = new AudioReqDto();
++        audioReqDto.setAudioFile(file);
++        audioReqDto.setName(name);
++
++        audioClient.sendAudio(audioReqDto);
++        return null;
++    }
++}
+Index: ui-service/src/component/AudioListView.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/component/AudioListView.jsx b/ui-service/src/component/AudioListView.jsx
+--- a/ui-service/src/component/AudioListView.jsx	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/src/component/AudioListView.jsx	(date 1718786431710)
+@@ -1,6 +1,7 @@
+ import { Link } from "react-router-dom";
+ import axios from 'axios'
+ import React, { useEffect, useState } from 'react';
++import {Button, Header, Menu} from "grommet";
+ 
+ function AudioListView() {
+ 
+@@ -10,6 +11,9 @@
+ 
+     const [s,setS] = useState();
+ 
++    function getList() {
++        axios.get("/client").then(res => console.log(res.data))
++    }
+ 
+ 
+     useEffect(() => {
+@@ -21,7 +25,7 @@
+ 
+         <div className={"wrapper"}>
+             This is audio page
+-            <Link to={".."}>to main view</Link>
++            <Link to={".."}>to main view version green</Link>
+             <p>{s}</p>
+         </div>
+     )
+Index: ui-service/src/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ui-service/src/index.js b/ui-service/src/index.js
+--- a/ui-service/src/index.js	(revision 2b18e41d5329eeb6415fef6a0449869097e7b83c)
++++ b/ui-service/src/index.js	(date 1718694753801)
+@@ -1,14 +1,15 @@
+ import React from 'react';
+ import ReactDOM from 'react-dom';
+ import './index.css';
+-import reportWebVitals from './reportWebVitals';
+ import Main from './component/main';
+ import {
+   createBrowserRouter,
+   RouterProvider,
+ } from "react-router-dom";
+ import AudioListView from './component/AudioListView';
+-import Header from './component/header';
++import registerServiceWorker from './RegisterServiceWorker';
++import {Button, Header, Menu} from "grommet";
++//todo
+ 
+ const router = createBrowserRouter([
+   {
+@@ -23,7 +24,6 @@
+ 
+ ReactDOM.createRoot(document.getElementById("root")).render(
+   <React.StrictMode>
+-    <Header/>
+     <RouterProvider router={router} />
+   </React.StrictMode>
+ );

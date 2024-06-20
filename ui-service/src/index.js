@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import Main from './component/main';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import AudioListView from './component/AudioListView';
-import Header from './component/header';
+import registerServiceWorker from './RegisterServiceWorker';
+import {Button, Header, Menu} from "grommet";
+//todo
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Header/>
     <RouterProvider router={router} />
   </React.StrictMode>
 );
