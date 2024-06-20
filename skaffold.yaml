@@ -1,0 +1,30 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: istio-project
+deploy:
+  kubeContext: minikube
+build:
+  local:
+    push: true
+  artifacts:
+#    - image: tsarankouviachaslau/client-service-blue
+#      context: client-service
+#      docker:
+#        dockerfile: Dockerfile
+
+    - image: tsarankouviachaslau/ui-service-blue
+      context: ui-service
+      sync:
+        manual:
+          - src: '/ui-service/public/**/*'
+            dest: /app/public/
+          - src: './ui-service/src/**/*'
+            dest: /app/src/
+
+manifests:
+  rawYaml:
+    - manifest/istio/external-virtual-service.yaml
+    - manifest/istio/http-gateway.yaml
+    - manifest/k8s/client-service.yaml
+    - manifest/k8s/ui-service.yaml
