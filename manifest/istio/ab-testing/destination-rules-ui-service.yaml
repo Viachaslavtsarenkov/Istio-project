@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: ui-service
+spec:
+  host: ui-service
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: version
