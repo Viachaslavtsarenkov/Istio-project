@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audio-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audio-db
+  template:
+    metadata:
+      labels:
+        app: audio-db
+        tier: database
+      annotations:
+        sidecar.istio.io/inject: 'false'
+    spec:
+      containers:
+        - name: audio-db
+          image: postgres:10.5
+          imagePullPolicy: "IfNotPresent"
+          env:
+            - name: POSTGRES_DB
+              value: audio-db
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: root
+            - name: POSTGRES_INITDB_ARGS
+              value: --auth=scram-sha-256
+          ports:
+            - containerPort: 5432
+              name: postgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: audio-db
+  labels:
+    app: audio-db
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: audio-db
