@@ -8,11 +8,22 @@ build:
   local:
     push: true
   artifacts:
-#    - image: tsarankouviachaslau/client-service-blue
-#      context: client-service
-#      docker:
-#        dockerfile: Dockerfile
-
+    - image: tsarankouviachaslau/client-service-blue
+      context: client-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './client-service/build/libs/app.jar'
+            dest: 'app/'
+    - image: tsarankouviachaslau/audio-service-blue
+      context: audio-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: './audio-service/build/libs/app.jar'
+            dest: 'app/'
     - image: tsarankouviachaslau/ui-service-blue
       context: ui-service
       sync:
@@ -26,5 +37,4 @@ manifests:
   rawYaml:
     - manifest/istio/external-virtual-service.yaml
     - manifest/istio/http-gateway.yaml
-    - manifest/k8s/client-service.yaml
-    - manifest/k8s/ui-service.yaml
+    - manifest/k8s/*
