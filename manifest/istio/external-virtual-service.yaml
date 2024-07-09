@@ -8,26 +8,33 @@ spec:
   gateways:
   - http-gateway                      # 1
   http:
-  - match:
-    - uri:
-        exact: /
-    - uri:
-        prefix: /audio
-    - uri:
-        prefix: /static
-    - uri:
-        regex: '^.*\.(ico|png|jpg)$'
-    route:
-    - destination:
-        host: ui-service            # 2
-        port:
-          number: 80
-          ### client service
-  - match:
-    - uri:
-        prefix: /client
-    route:
-    - destination:
-        host: client-service            # 3
-        port:
-          number: 80
+    - match:
+      - uri:
+          exact: /
+      - uri:
+          prefix: /static
+      - uri:
+          regex: '^.*\.(ico|png|jpg)$'
+      route:
+      - destination:
+          host: ui-service            # 2
+          port:
+            number: 80
+            ### client service
+    - match:
+      - uri:
+          prefix: /client
+      route:
+      - destination:
+          host: client-service            # 3
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /audio
+      route:
+      - destination:
+          host: audio-service            # 4
+          port:
+            number: 80
+            ### audio db
