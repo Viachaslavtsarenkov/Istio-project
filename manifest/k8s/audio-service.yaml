@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audio-service
+  labels:
+    app: audio-service
+spec:
+  selector:
+    matchLabels:
+      app:  audio-service
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: audio-service
+        version: blue
+    spec:
+      containers:
+        - image: tsarankouviachaslau/audio-service-blue
+          imagePullPolicy: Always
+          name: audio-service
+          env:
+            - name: DATABASE_URL
+              value: jdbc:postgresql://audio-db:5432/audio-db
+            - name: DATABASE_USER
+              value: admin
+            - name: DATABASE_PASSWORD
+              value: root
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: audio-service
+  labels:
+    app: audio-service
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: audio-service
