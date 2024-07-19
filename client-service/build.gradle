@@ -14,10 +14,13 @@ dependencies {
     /* WEB */
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+    implementation 'io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9'
+    implementation group: 'io.jaegertracing', name: 'jaeger-tracerresolver', version: '1.8.1'
     /* Dev */
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     compileOnly 'org.projectlombok:lombok'
-
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
     /* Test */
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
