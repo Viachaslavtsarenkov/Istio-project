@@ -20,15 +20,24 @@ spec:
           host: ui-service            # 2
           port:
             number: 80
-            ### client service
+    ### client service
     - match:
       - uri:
           prefix: /client
       route:
       - destination:
-          host: client-service            # 3
+          host: client-service
           port:
             number: 80
+    - match:
+        - uri:
+            prefix: /client/audio
+      route:
+        - destination:
+            host: client-service
+            port:
+              number: 80
+    ### audio service
     - match:
       - uri:
           prefix: /audio
@@ -37,4 +46,3 @@ spec:
           host: audio-service            # 4
           port:
             number: 80
-            ### audio db
