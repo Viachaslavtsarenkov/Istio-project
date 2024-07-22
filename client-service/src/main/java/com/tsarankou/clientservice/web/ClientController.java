@@ -21,14 +21,6 @@ public class ClientController {
     @PostMapping
     public IdDto saveAudioFile(@RequestParam(name = "audioFile") MultipartFile audioFile,
                                @RequestParam(name = "title") String title) throws IOException {
-        //todo
-        // get file and set it into request
-
-        File convFile = new File( audioFile.getOriginalFilename() );
-        FileOutputStream fos = new FileOutputStream( convFile );
-        fos.write(audioFile.getBytes());
-        fos.close();
-
-        return clientService.saveAudio(convFile,title);
+                return clientService.saveAudio(audioFile.getBytes(),title);
     }
 }

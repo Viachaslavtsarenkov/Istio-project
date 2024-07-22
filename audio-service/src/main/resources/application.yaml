@@ -11,3 +11,11 @@ spring:
    hibernate:
     ddl-auto: update
    database-platform: org.hibernate.dialect.PostgreSQLDialect
+client:
+  audio:
+    s3:
+      url: http://aws-service:4566
+      accessKey: fake_access_key
+      secretKey: fake_secret_key
+      bucket: com.tsarankou.bucket.audio
+      region: us-west-1

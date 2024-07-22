@@ -16,9 +16,9 @@ public class ClientServiceImpl implements ClientService {
     private final AudioClient audioClient;
 
     @Override
-    public IdDto saveAudio(File file, String name) {
+    public IdDto saveAudio(byte[] audioFile, String name) {
         AudioReqDto audioData = new AudioReqDto();
-        audioData.setAudioFile(file);
+        audioData.setAudioFile(audioFile);
         audioData.setTitle(name);
         return audioClient.sendAudio(audioData);
     }

@@ -1,4 +1,4 @@
-rootProject.name = 'istio-project'
+rootProject.name = 'Istio-project'
 include 'client-service'
 include 'audio-service'
 
